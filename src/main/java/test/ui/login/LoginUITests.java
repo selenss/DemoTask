@@ -25,6 +25,6 @@ public class LoginUITests extends BaseTest {
 
     @Test
     public void testcase3() {
-        Assert.assertEquals(page.getStatusCode("users?page=2"), 200);
+        Assert.assertEquals(page.checkUrlStatusCode("users?page=2"), 200);
     }
 }
