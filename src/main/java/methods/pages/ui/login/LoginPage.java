@@ -7,11 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
-    private WebDriver driver;
-
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 @FindBy( id = "content")
 public WebElement something;
