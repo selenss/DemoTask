@@ -9,6 +9,7 @@ import org.testng.Assert;
 
 public class LoginUITests extends BaseTest {
     LoginPage page;
+    String myStoredValue;
     @BeforeTest
     public void  beforeTest() {
         page = new LoginPage(getDriver());
@@ -23,11 +24,17 @@ public class LoginUITests extends BaseTest {
     public void testcase2() {
         Response res = page.getBody("users?page=2");
         System.out.println(res.jsonPath().getString(""));
+        myStoredValue =  res.jsonPath().getString("data.id[0]");
         Assert.assertEquals("7", res.jsonPath().getString("data.id[0]"));
     }
 
     @Test
     public void testcase3() {
         Assert.assertEquals(page.checkUrlStatusCode("users?page=2"), 200);
+    }
+
+    @Test
+    public void testcase4() {
+        Assert.assertEquals("7", myStoredValue);
     }
 }

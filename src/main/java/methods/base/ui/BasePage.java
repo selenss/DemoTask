@@ -25,13 +25,12 @@ public class BasePage {
     }
 
     public Response getBody(String url) {
-        Response response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .param("postId", "2")
                 .when()
                 .get(baseUrl + url)
                 .then()
                 .extract().response();
-        return response;
     }
 }
