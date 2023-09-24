@@ -1,5 +1,6 @@
 package test.ui.login;
 
+import io.restassured.response.Response;
 import methods.base.ui.BaseTest;
 import methods.pages.ui.login.LoginPage;
 import org.testng.annotations.BeforeTest;
@@ -20,7 +21,9 @@ public class LoginUITests extends BaseTest {
 
     @Test
     public void testcase2() {
-        Assert.assertEquals(page.method(), "large-12 columns");
+        Response res = page.getBody("users?page=2");
+        System.out.println(res.jsonPath().getString(""));
+        Assert.assertEquals("7", res.jsonPath().getString("data.id[0]"));
     }
 
     @Test
