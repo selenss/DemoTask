@@ -1,56 +1,44 @@
 package test.stock.ui;
 
-import io.restassured.http.ContentType;
+
 import io.restassured.response.Response;
-import methods.base.BasePage;
 import methods.base.BaseTest;
+import methods.base.BaseAPI;
 import methods.pages.stock.StockPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
+import java.util.HashMap;
+
 public class StockTestsUI extends BaseTest {
-    StockPage page;
+    //StockPage stockPage;
+    Response response;
+    StockPage stockPage;
+
     @BeforeTest
     public void  beforeTest() {
-        page = new StockPage(getDriver());
-    }
-    @Test
-    public void checkSymbolInfoUI() {
-        String endpoint = "/get-chart";
-        Response response = given()
-                .header("X-RapidAPI-Key", BasePage.apiKey)
-                .header("X-RapidAPI-Host",BasePage.host)
-                .contentType(ContentType.JSON)
-                .param("interval", "1mo")
-                .param("symbol", "NVDA")
-                .param("range", "5y")
-                .param("region", "US")
-                .when()
-                .get(BasePage.baseUrl + endpoint)
-                .then()
-                .extract().response();
+        stockPage = new StockPage(getDriver());
+        // Test data
+        String endpoint = "/get-chart?interval=1mo&symbol=NVDA&range=5y&region=US";
+        HashMap<String, String> headers = new HashMap<String, String>();
+        headers.put("X-RapidAPI-Key", BaseAPI.apiKey);
+        headers.put("X-RapidAPI-Host",BaseAPI.host);
+        // Test Execution and Results
+        response = BaseAPI.performGet(endpoint,headers);
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(page.checkSymbolInfo(), response.jsonPath().getString("chart.result.meta.symbol[0]"));
     }
 
-    @Test
-    public void checkCurrencyInfo() {
-        String endpoint = "/get-chart";
-        Response response = given()
-                .header("X-RapidAPI-Key", BasePage.apiKey)
-                .header("X-RapidAPI-Host",BasePage.host)
-                .contentType(ContentType.JSON)
-                .param("interval", "1mo")
-                .param("symbol", "NVDA")
-                .param("range", "5y")
-                .param("region", "US")
-                .when()
-                .get(BasePage.baseUrl + endpoint)
-                .then()
-                .extract().response();
-        Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertTrue(page.checkCurrency().contains(response.jsonPath().getString("chart.result.meta.currency[0]")));
+    @Test (groups = "UI")
+    public void checkSymbolInfoUI() {
+        String timezoneInfoText = stockPage.checkCloseTimeInfo();
+        Assert.assertTrue(timezoneInfoText.contains(response.jsonPath().getString("chart.result.meta.timezone[0]")));
     }
+
+    @Test (groups = "UI")
+    public void checkCurrencyInfo() {
+        String currencyInfoText = stockPage.checkCurrency();
+        Assert.assertTrue(currencyInfoText.contains(response.jsonPath().getString("chart.result.meta.currency[0]")));
+    }
+
 }

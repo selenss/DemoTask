@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Demo Test Cases">
+    <test name="Backend">
+        <groups>
+            <run>
+                <include name = "UI">"UI"</include>
+                <include name = "API">"API"</include>
+                <exclude name = "failed">"failed"</exclude>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.stock.api.StockTestsAPI"/>
+        </classes>
+    </test>
+    <test name="Frontend">
+        <classes>
+            <class name="test.stock.ui.StockTestsUI"/>
+        </classes>
+    </test>
+</suite>

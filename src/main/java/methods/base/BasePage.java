@@ -1,19 +1,19 @@
 package methods.base;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+
 public class BasePage {
     private static final int TIMEOUT = 15;
 
-    protected WebDriver driver;
-    public static String baseUrl = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3";
-    public static String apiKey = "a6385b20cbmsh7244b7d3260e90ep1af974jsnf8ddc891417d";
-    public static String host = "apidojo-yahoo-finance-v1.p.rapidapi.com";
+    protected static WebDriver driver;
 
+    // Common methods
     public BasePage(WebDriver driver) {
-        this.driver = driver;
+        BasePage.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
     }
 
