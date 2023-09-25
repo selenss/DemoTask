@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Demo Test Cases">
-    <test name="API">
+    <test name="Chrome API">
+        <parameter name="browser" value="Firefox"/>
         <classes>
             <class name="test.stock.api.StockTestsAPI"/>
         </classes>
     </test>
-    <test name="UI">
+    <test name="Firefox API">
+        <parameter name="browser" value="Firefox"/>
+        <classes>
+            <class name="test.stock.api.StockTestsAPI"/>
+        </classes>
+    </test>
+    <test name="Chrome UI">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="test.stock.ui.StockTestsUI"/>
+        </classes>
+    </test>
+    <test name="Firefox UI">
+        <parameter name="browser" value="Firefox"/>
         <classes>
             <class name="test.stock.ui.StockTestsUI"/>
         </classes>

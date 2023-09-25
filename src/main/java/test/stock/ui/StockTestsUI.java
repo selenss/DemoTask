@@ -24,20 +24,20 @@ public class StockTestsUI extends BaseTest {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-RapidAPI-Key", BaseAPI.apiKey);
         headers.put("X-RapidAPI-Host",BaseAPI.host);
-        // Test Execution and Results
+        // Test Data Validation
         response = BaseAPI.performGet(endpoint,headers);
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
     @Test
     public void checkSymbolInfoUI() {
-        String timezoneInfoText = stockPage.checkCloseTimeInfo();
+        String timezoneInfoText = stockPage.getCloseTimeInfo();
         Assert.assertTrue(timezoneInfoText.contains(response.jsonPath().getString("chart.result.meta.timezone[0]")));
     }
 
     @Test
     public void checkCurrencyInfo() {
-        String currencyInfoText = stockPage.checkCurrency();
+        String currencyInfoText = stockPage.getCurrency();
         Assert.assertTrue(currencyInfoText.contains(response.jsonPath().getString("chart.result.meta.currency[0]")));
     }
 

@@ -17,7 +17,7 @@ public class BasePage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
     }
 
-    public static String getRandomFromStringArr(String[] array) {
+    public static String getRandomIndexValueFromStringArr(String[] array) {
         int rnd = (int)(Math.random()*array.length);
         return array[rnd];
     }

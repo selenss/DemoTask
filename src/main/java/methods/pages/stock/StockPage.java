@@ -16,16 +16,16 @@ public class StockPage extends BasePage {
     public WebElement timezoneInfoText;
 
     @FindBy( xpath = "//translate[contains(text(),'Currency in ')]")
-    public WebElement currencyInfo;
+    public WebElement currencyInfoText;
 
     // Methods
-    public String checkCloseTimeInfo() {
+    public String getCloseTimeInfo() {
         Waits.waitForElement(timezoneInfoText);
         return getElementText(timezoneInfoText);
     }
 
-    public String checkCurrency() {
-        Waits.waitForElement(currencyInfo);
-        return getElementText(currencyInfo);
+    public String getCurrency() {
+        Waits.waitForElement(currencyInfoText);
+        return getElementText(currencyInfoText);
     }
 }

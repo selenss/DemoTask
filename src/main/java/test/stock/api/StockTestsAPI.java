@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
-import static methods.base.BasePage.getRandomFromStringArr;
+import static methods.base.BasePage.getRandomIndexValueFromStringArr;
 
 public class StockTestsAPI extends BaseAPI {
     String[] intervals = {"1m", "2m", "5m", "15m", "30m", "60m", "1d", "1wk", "1mo"};
@@ -17,10 +17,10 @@ public class StockTestsAPI extends BaseAPI {
     @Test (enabled = false)
     public void checkRangeInfoByRandomParams() {
         // Test data
-        String interval = getRandomFromStringArr(intervals);
-        String symbol = getRandomFromStringArr(symbols);
-        String range = getRandomFromStringArr(ranges);
-        String region = getRandomFromStringArr(regions);
+        String interval = getRandomIndexValueFromStringArr(intervals);
+        String symbol = getRandomIndexValueFromStringArr(symbols);
+        String range = getRandomIndexValueFromStringArr(ranges);
+        String region = getRandomIndexValueFromStringArr(regions);
         String endpoint = "/get-chart?interval="+ interval + "&symbol= " + symbol + "&range=" + range + "&region=" + region;
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-RapidAPI-Key", BaseAPI.apiKey);
