@@ -2,6 +2,10 @@ package methods.base;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.Map;
 
@@ -15,6 +19,8 @@ public class BaseAPI {
     public static String apiKey = "<your_api_key>";
     public static String host = "apidojo-yahoo-finance-v1.p.rapidapi.com";
 
+    public static Logger log = LogManager.getLogger();
+
     // GET request structure
     public static Response performGet(String endpoint, Map<String, String> headers) {
         Response resp = given()
@@ -24,6 +30,15 @@ public class BaseAPI {
                 .then()
                 .extract().response();
         return resp;
+    }
+    @BeforeTest
+    public void beforeSuite() {
+        log.info("Test started");
+    }
+
+    @AfterTest
+    public void afterHook() {
+        log.info("Test completed");
     }
 
 }

@@ -19,7 +19,7 @@ public class StockTestsUI extends BaseTest {
     @BeforeTest
     public void  beforeTest() {
         stockPage = new StockPage(getDriver());
-        // Test data
+        // Test Data
         String endpoint = "/get-chart?interval=1mo&symbol=NVDA&range=5y&region=US";
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-RapidAPI-Key", BaseAPI.apiKey);
@@ -31,12 +31,14 @@ public class StockTestsUI extends BaseTest {
 
     @Test
     public void checkSymbolInfoUI() {
+        log.info("UI TC1");
         String timezoneInfoText = stockPage.getCloseTimeInfo();
         Assert.assertTrue(timezoneInfoText.contains(response.jsonPath().getString("chart.result.meta.timezone[0]")));
     }
 
     @Test
     public void checkCurrencyInfo() {
+        log.info("UI TC2");
         String currencyInfoText = stockPage.getCurrency();
         Assert.assertTrue(currencyInfoText.contains(response.jsonPath().getString("chart.result.meta.currency[0]")));
     }

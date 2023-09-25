@@ -1,6 +1,8 @@
 package methods.base;
 
 import methods.pages.stock.YahooConsentPage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,6 +15,7 @@ import java.time.Duration;
 
 public class BaseTest {
     private WebDriver driver;
+    public static Logger log = LogManager.getLogger();
     YahooConsentPage consentPage;
 
     @Parameters("browser")
@@ -51,10 +54,12 @@ public class BaseTest {
         driver.get("https://finance.yahoo.com/chart/NVDA");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         consentPage.clickRejectAllButton();
+        log.info("Test started");
     }
 
     @AfterTest
     public void afterHook() {
+        log.info("Test completed");
         driver.quit();
     }
 
