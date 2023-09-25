@@ -13,9 +13,9 @@
 ## Configurations
 1. JDK configuration in Intellij https://www.jetbrains.com/help/idea/sdk.html#define-sdk
 2. "apiKey" in src/main/java/methods/base/BaseAPI.java (Please register in https://rapidapi.com/apidojo/api/yahoo-finance1/ and save your own apiKey)
-3. chromedriver file (downloaded in the section Installations, Step #4) path should be added to src/main/java/methods/base/BaseTest.java. Details;
-   3.1. This project uses chromedriver (for MACOS and Chrome V.117) as src/main/java/drivers/chromedriver and it does not require any action.
-   3.2. If you would like to continue another chromedriver file, you can upload the file to src/main/java/drivers folder and change the path as follow
+3. chromedriver file (downloaded in the section Installations, Step #4) path should be added to src/main/java/methods/base/BaseTest.java. 
+4. This project uses chromedriver (for MACOS and Chrome V.117) as src/main/java/drivers/chromedriver and it does not require any action.
+5. If you would like to continue another chromedriver file, you can upload the file to src/main/java/drivers folder and change the path as;
    System.setProperty("webdriver.chrome.driver", "<your_path_to_chromedriver_file>");
 
 ## Test Execution

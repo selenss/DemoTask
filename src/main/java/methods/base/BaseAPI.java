@@ -12,7 +12,7 @@ public class BaseAPI {
     }
     // API params
     public static String baseUrl = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3";
-    public static String apiKey = "a6385b20cbmsh7244b7d3260e90ep1af974jsnf8ddc891417d";
+    public static String apiKey = "<your_api_key>";
     public static String host = "apidojo-yahoo-finance-v1.p.rapidapi.com";
 
     // GET request structure
