@@ -17,13 +17,13 @@ public class BaseAPI {
 
     // GET request structure
     public static Response performGet(String endpoint, Map<String, String> headers) {
-        Response response = given()
+        Response resp = given()
                 .headers(headers)
                 .contentType(ContentType.JSON)
                 .get(baseUrl + endpoint)
                 .then()
                 .extract().response();
-        return response;
+        return resp;
     }
 
 }

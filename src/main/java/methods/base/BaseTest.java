@@ -19,6 +19,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         consentPage = new YahooConsentPage(getDriver());
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.get("https://finance.yahoo.com/chart/NVDA");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         consentPage.clickRejectAllButton();
