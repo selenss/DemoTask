@@ -11,7 +11,8 @@
 
 ## Configurations
 1. JDK configuration in Intellij https://www.jetbrains.com/help/idea/sdk.html#define-sdk
-2. Update "apiKey" in src/main/java/methods/base/BaseAPI.java (Please register in https://rapidapi.com/apidojo/api/yahoo-finance1/ and save your own apiKey)
+2. Please register and save your API Key in https://rapidapi.com/
+3. Update "apiKey" in src/main/java/methods/base/BaseAPI.java
 
 ## Test environment
 In order to demonstrate cross browser testing, please execute tests in MacOS and/or Windows devices.
